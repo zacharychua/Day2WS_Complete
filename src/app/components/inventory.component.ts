@@ -18,13 +18,22 @@ export class InventoryComponent implements OnInit {
   ngOnInit() {
     this.page = 1;
     this.inventory = this.retrieveInventoryList();
+    this.checkPage();
+  }
+
+  checkPage(){
     if(this.page >= Math.ceil(INVENTORY.length/5)){
       this.nextPage = false;
     }
     else{
       this.nextPage = true;
     }
-    this.prevPage = false;
+    if(this.page === 1){
+      this.prevPage = false;
+    }
+    else{
+      this.prevPage = true;
+    }
   }
 
   retrieveInventoryList(){
@@ -32,25 +41,19 @@ export class InventoryComponent implements OnInit {
   }
 
   retrieveNextPage(){
-    if(this.page >= Math.ceil(INVENTORY.length/5)){
-      this.nextPage = false;
-    }
-    else{
+    if(this.page < Math.ceil(INVENTORY.length/5)){
       this.page += 1;
-      this.prevPage = true;
     }
+    this.checkPage();
     this.inventory = this.retrieveInventoryList();
     console.info("Inventory: " + this.inventory.length + " Page: " + this.page);
   }
 
   retrievePrevPage(){
-    if(this.page == 1){
-      this.prevPage = false;
-    }
-    else{
+    if(this.page !== 1){
       this.page -= 1;
-      this.nextPage = true;
     }
+    this.checkPage();
     this.inventory = this.retrieveInventoryList();
     console.info("Inventory: " + this.inventory.length + " Page: " + this.page);
   }

@@ -1,13 +1,16 @@
 <div class="inventory">
-    <h1> Cart </h1>
+    <h1> Cart: {{cart.length}} Total Cost: S$ {{calculateTotal()}} </h1>
     <hr>
+    <div *ngIf="cart.length === 0">
+        <h2>Your Cart is Empty</h2>
+    </div>
     <div class="display-column" *ngFor="let item of inventory; let i = index;">
         <img [src]="item.productImg" [alt]="item.productName">
         <div class="display-row">
             <code>{{item.productName}}</code>
             <code>{{item.productId}}</code>
             <code>S$ {{item.productUP}}</code>
-            <button>Remove</button>
+            <button (click)="removeFromCart(item)">Remove</button>
         </div>      
     </div>
     <button class="changePage" [disabled]="!prevPage" (click)="retrievePrevPage()">Previous Page</button>
