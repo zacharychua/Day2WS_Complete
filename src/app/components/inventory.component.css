@@ -1,0 +1,38 @@
+.display-column{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5%;
+}
+
+.display-row{
+    display: flex;
+    flex-direction: column;
+}
+
+.inventory{
+    border: 1em dotted burlywood;
+    width: 40vw;
+    height: auto;
+    margin-right: 2vw;
+}
+
+.changePage{
+    width: 15vw;
+    height: auto;
+    font-weight: bold;
+}
+
+img{
+    width: auto;
+    height: 15vh;
+}
+
+code{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+button{
+    width: 5vw;
+    height: 3vh;
+}

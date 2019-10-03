@@ -1,0 +1,16 @@
+<div class="inventory">
+    <h1> Inventory </h1>
+    <hr>
+    <div class="display-column" *ngFor="let item of inventory; let i = index;">
+        <img [src]="item.productImg" [alt]="item.productName">
+        <div class="display-row">
+            <code>{{item.productName}}</code>
+            <code>{{item.productId}}</code>
+            <code>S$ {{item.productUP}}</code>
+            <button (click)="addToCart(item)">Add</button>
+        </div>      
+    </div>
+    <button class="changePage" [disabled]="!prevPage" (click)="retrievePrevPage()">Previous Page</button>
+    <button class="changePage" [disabled]="!nextPage" (click)="retrieveNextPage()">Next Page</button>
+</div>
+
